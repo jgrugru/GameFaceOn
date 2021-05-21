@@ -1,2 +1,2 @@
 # GameFaceOn
-A repository used to get familiar with pygame.
+A repository for using the pygame library.
