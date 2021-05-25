@@ -1,12 +1,15 @@
-from pygame import display
+from pygame import display, Surface
 
 
-class Screen():
+class Screen(Surface):
 
     def __init__(self):
         self.SCREEN_WIDTH = 800
         self.SCREEN_HEIGHT = 600
-        self.screen = self.display_screen()
+        super().__init__((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
+        self = self.display_screen()
+        # breakpoint()
+        print(type(self))
 
     def display_screen(self):
         return display.set_mode((
@@ -14,13 +17,14 @@ class Screen():
         ))
 
     def set_background(self):
-        self.screen.fill((255, 255, 255))
+        self.fill((255, 255, 255))
 
-    def get_width(self):
-        return self.SCREEN_WIDTH
 
-    def get_height(self):
-        return self.SCREEN_HEIGHT
+    # def get_width(self):
+    #     return self.SCREEN_WIDTH
 
-    def get_screen(self):
-        return self.screen
+    # def get_height(self):
+    #     return self.SCREEN_HEIGHT
+
+    # def get_screen(self):
+    #     return self.screen

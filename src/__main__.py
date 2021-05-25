@@ -24,9 +24,24 @@ def event_controller(event):
 if __name__ == "__main__":
     pygame.init()
 
-    screen = Screen()
+    # screen = Screen()
     # screen.display_screen()
-    screen.set_background()
+    # screen.set_background()
+
+    screen = pygame.display.set_mode((800, 600))
+    screen.fill((255, 255, 255))
+
+    rect = pygame.Surface((50, 50))
+    rect.fill((100, 0, 100))
+    new_rect = rect.get_rect()
+
+    center_rect = (
+        (screen.get_width()-rect.get_height())/2,
+        (screen.get_height()-rect.get_height())/2
+    )
+
+    screen.blit(rect, center_rect)
+    pygame.display.flip()
 
     running = True
     while running:
@@ -35,14 +50,13 @@ if __name__ == "__main__":
 
         # pygame.draw.circle(screen.get_screen(), (0, 0, 255), (250, 250), 75)
 
-        surface = pygame.Surface((50, 50))
-        surface.fill((0, 0, 0))
-        rect = surface.get_rect()
+        # surface = pygame.Surface((50, 50))
+        # surface.fill((100, 0, 100))
+        # rect = surface.get_rect()
+        # # breakpoint()
 
-        screen.get_screen().blit(surface,
-                                 ((screen.get_width()-surface.get_width())/2,
-                                  (screen.get_height()-surface.get_height())/2))
-        pygame.display.flip()
+        # screen.blit(surface, surface_cent)
+        # pygame.display.flip()
 
     pygame.quit()
 
