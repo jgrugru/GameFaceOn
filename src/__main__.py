@@ -9,7 +9,10 @@ from pygame.locals import (
     QUIT,
 )
 
-from Screen import Screen
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
 
 def event_controller(event):
     print(event)
@@ -21,14 +24,20 @@ def event_controller(event):
         running = False
     return running
 
-if __name__ == "__main__":
+
+def init_game():
     pygame.init()
 
-    screen = Screen()
-    screen = pygame.display.get_surface()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen.fill((100, 0, 255))
+    pygame.display.flip()
+    return screen
+
+
+def add_rectangle(screen):
 
     rect = pygame.Surface((50, 50))
-    rect.fill((100, 0, 100))
+    rect.fill((255, 0, 100))
     new_rect = rect.get_rect()
 
     center_rect = (
@@ -37,7 +46,14 @@ if __name__ == "__main__":
     )
 
     screen.blit(rect, center_rect)
-    pygame.display.flip()
+
+
+if __name__ == "__main__":
+    screen = init_game()
+
+    add_rectangle(screen)
+
+    pygame.display.flip()  # update screen
 
     running = True
     while running:
@@ -45,4 +61,3 @@ if __name__ == "__main__":
             running = event_controller(event)
 
     pygame.quit()
-
